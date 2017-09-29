@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <nav>
+    <ul class="cima">
+            <li class="nav-item">
+              <a class="nav-link active" href="/login">Login<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/contact">sobre mim<span class="sr-only">(current)</span></a>
+              <li class="nav-item">
+                <a class="nav-link active" href="/signup">Cadastro<span class="sr-only">(current)</span></a>
+                  <li class="nav-item">
+                <a class="nav-link active" href="/">Pagina inicial<span class="sr-only">(current)</span></a>
+            </li>
+            </li>
+            </li>
+            </li>
+          </ul>
+     </nav>
+
+    <title>Desafio Flask</title>
+
+    <link href="{{ url_for('static', filename="css/bootstrap.min.css") }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../static/css/_css.css ">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+
+    <link href="narrow-jumbotron.css" rel="stylesheet">
+
+<style rel="stylesheet" type="text/css">
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+body {
+  background-color:yellow;
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px Roboto,arial,sans-serif;
+}
+
+.cima{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    display: flex;
+}
+
+.cima label{
+  padding: 10px 0;
+  flex-grow: 1;
+  cursor: pointer;
+  transition: all .4s;
+  text-align: center;
+  font-family: 'arial';
+  font-size: 100%;
+  color:red;
+
+.container {
+    padding: 25px;
+    position: fixed;
+}
+
+.form-login {
+    background-color:red;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+h4 {
+ border:0 solid #fff;
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+</style>
+
+
+  </head>
+
+  <body>
+
+    <div class="container" align="center">
+      <div class="">
+        <h3 class="text-muted">Desafio Flask</h3>
+      </div>
+
+      <div class-"alert alert-warning">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+      </ul>
+
+       </div>
+     
+
+
+      {% block content %}
+      {% endblock %}
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{ url_for('static', filename="js/bootstrap.min.js") }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

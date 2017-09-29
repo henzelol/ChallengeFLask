@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>LOGIN</h1>
+    <div class="col-md-4 col-md-offset-4" align="center">
+    <form action="" method="POST">
+    {{ form.csrf_token }}
+    <div class="form-group">
+    <label>email</label> 
+    {{ form.email(class="form-control", placeholder="seu email") }}
+    {% if form.errors.email %}
+     <div class="alert alert-danger" role="alert">
+    <ul>
+    {%for e in form.errors.email %}
+      <li>{{ e }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+    </div>
+    <div class="from-group">
+    <label>Senha</label>
+    {{ form.senha(class="form-control", placeholder="sua senha") }}
+    {% if form.errors.senha %}
+    <div class="alert alert-danger" role="alert">
+    <ul>
+    {%for e in form.errors.email %}
+      <li>{{ e }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+    </div>
+    <div class="checkbox">
+    <label>
+    {{ form.remember_me }} Aceito os termos de Uso
+    </label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    </div>
+{% endblock %}
