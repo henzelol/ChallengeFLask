@@ -54,15 +54,7 @@
             <a class="nav-link" href="/create">Itens Criados <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Deslogar</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            <a class="nav-link" href="">Deslogar</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -76,31 +68,61 @@
     <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <p>Neste site voce pode cadastrar itens e especificar o seu valor de acordo com o que voce achar correto! Adicione seu item,sua descrição e seu valor e vá para o outro link que se encontra ao lado para visualizar seu item</p>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-2">
+          <h2>Nome do seu Item</h2>
+          <form action="" method="POST">
+    {{ form.csrf_token }}
+    <div class="form-group"> 
+    {{ form.name(class="form-control", placeholder="diga o nome do seu item") }}
+    {% if form.errors.name %}
+     <div class="alert alert-danger" role="alert">
+    <ul>
+    {%for e in form.errors.name %}
+      <li>{{ e }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+    <BR>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-2">
+          <h2>Descrição do item</h2>
+    <div class="form-group">
+    {{ form.description(class="form-control", placeholder="digite a descriçao do item") }}
+    {% if form.errors.description %}
+     <div class="alert alert-danger" role="alert">
+    <ul>
+    {%for e in form.errors.description %}
+      <li>{{ e }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+        <div class="col-md-2">
+          <h2>Valor</h2>
+          <form action="" method="POST">
+    <div class="form-group">
+    {{ form.value(class="form-control", placeholder="Valor desejado") }}
+    {% if form.errors.value %}
+     <div class="alert alert-danger" role="alert">
+    <ul>
+    {%for e in form.errors.value %}
+      <li>{{ e }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
         </div>
       </div>
 
+<button type="submit" class="btn btn-default">Submit</button>
       <hr>
 
       <footer>
