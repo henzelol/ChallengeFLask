@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, logout_user
 
 
 app = Flask(__name__)
@@ -35,7 +35,22 @@ class LoginForm(Form):
     remember_me = BooleanField('remember_me', default=False)
     email = StringField("email", validators=[DataRequired()])
     senha = PasswordField("senha", validators=[DataRequired()])
-    
+    name = StringField("name", validators=[DataRequired()])
+    description = StringField("description", validators=[DataRequired()])
+    value = StringField("value", validators=[DataRequired()])
+
+class products(db.Model):
+    __tablename__ = "produtos"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), primary_key=True)
+    description = db.Column(db.String(50), primary_key=True)
+    value = db.Column(db.Integer, primary_key=True)
+
+    def __init__(self,name,description,value):
+        self.name = name
+        self.description = description
+        self.value  = value
 
 class User(db.Model):
     __tablename__ = "users"
@@ -110,16 +125,33 @@ def signup():
 
 
 
-@app.route("/logged")
+@app.route("/logged", methods=['GET', 'POST'])
 def logged():
-    return render_template("logged.html")
+    form = LoginForm()
+    if request.method == 'POST':
+        name = (request.form.get("name"))
+        description = (request.form.get("description"))
+        value = (request.form.get("value"))
+        new_product = products(name=name,description=description,value=value)
+        
+        db.session.add(new_product)
+        db.session.commit()
+        flash("Item criado com sucesso")
+        return "OK"
+    return render_template("logged.html", form=form)
 
 
 @app.route("/contact")
 def contato():
+
     return render_template("contact.html")
 
 
+@app.route("/logout")
+def logout():
+    logout_user()
+    flash("Deslogado com sucesso")
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(debug=True)
