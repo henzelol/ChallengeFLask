@@ -9,7 +9,7 @@
 
 
 
-    <title>Crie Seus itens</title>
+    <title>Itens Criados</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename="css/bootstrap.min.css") }}" rel="stylesheet">
@@ -51,10 +51,10 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="create">Itens Criados <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/create">Itens Criados <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="url_for(logout_user())">Deslogar</a>
+            <a class="nav-link" href="">Deslogar</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -67,70 +67,48 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-3">Criador de Itens!</h1>
-        <p>Neste site voce pode cadastrar itens e especificar o seu valor de acordo com o que voce achar correto! Adicione seu item,sua descrição e seu valor e vá para o outro link que se encontra ao lado para visualizar seu item</p>
+        <h1 class="display-3">chece seus Itens!</h1>
+        <p>aqui voce pode ver o itens que voce criou </p>
       </div>
     </div>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Nome dos itens cadastrados</h2>
+          <form action="" method="GET">
+    <div class="form-group"> 
+       {% for produto in produtos %}
+         <h1> {{ produto.name }}</h1>
+         <br>
+                 {% endfor %} 
+<br>
+<br>
+
+        </div>
+        <div class="col-md-8">
+          <h2>Descrição de respectvio Item</h2>
+    <div class="form-group">
+      {% for produto in produtos %} 
+    <h1>{{ produto.description }}</h1>
+    <br>
+        {% endfor %} 
+<br>
+<br>
+        <div class="col-md-8">
+          <h2>Valor respectivo de cada item</h2>
+          <form action="" method="POST">
+    <div class="form-group">
+    {% for produto in produtos %}
+    <h1>{{ produto.value }}</h1>
+    <br>
+        {% endfor %} 
+    </div> <!-- /container -->
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-8">
-          <h2>Nome do seu Item</h2>
-          <form action="" method="POST">
-    <div class="form-group">
-    {{ form.name(class="form-control", placeholder="nome do item") }}
-    {% if form.errors.name %}
-     <div class="alert alert-danger" role="alert">
-    <ul>
-    {%for e in form.errors.name %}
-      <li>{{ e }}</li>
-    {% endfor %}
-    </ul>
-    </div>
-    {% endif %}
-    </div>
-        </div>
-        <div class="col-md-8">
-          <h2>Descrição do item</h2>
-    <div class="form-group">
-    
-    {{ form.description(class="form-control", placeholder="descrição do seu item") }}
-    {% if form.errors.description %}
-     <div class="alert alert-danger" role="alert">
-    <ul>
-    {%for e in form.errors.description %}
-      <li>{{ e }}</li>
-    {% endfor %}
-    </ul>
-    </div>
-    {% endif %}
-    </div>
-        <div class="col-md-4">
-          <h2>Valor</h2>
-          <form action="" method="POST">
-    <div class="form-group">
-<div class="form-group">
-    
-    {{ form.value(class="form-control", placeholder="Digite o valor do seu Item") }}
-    {% if form.errors.value %}
-     <div class="alert alert-danger" role="alert">
-    <ul>
-    {%for e in form.errors.value %}
-      <li>{{ e }}</li>
-    {% endfor %}
-    </ul>
-    </div>
-    {% endif %}
-    </div>
-
-<button type="submit" class="btn btn-default">Submit</button>
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2017</p>
-      </footer>
-    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript

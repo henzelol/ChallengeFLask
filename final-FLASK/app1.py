@@ -40,12 +40,10 @@ class LoginForm(Form):
     value = StringField("value", validators=[DataRequired()])
 
 class products(db.Model):
-    __tablename__ = "produtos"
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), primary_key=True)
-    description = db.Column(db.String(50), primary_key=True)
-    value = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True )
+    name = db.Column(db.String(50))
+    description = db.Column(db.String(50))
+    value = db.Column(db.Integer)
 
     def __init__(self,name,description,value):
         self.name = name
@@ -137,21 +135,27 @@ def logged():
         db.session.add(new_product)
         db.session.commit()
         flash("Item criado com sucesso")
-        return "OK"
     return render_template("logged.html", form=form)
+
 
 
 @app.route("/contact")
 def contato():
-
     return render_template("contact.html")
 
+@app.route("/create", methods=['GET'])
+def create():
+    form = LoginForm()
+    produtos = products.query.all()
+    return render_template("create.html",produtos=produtos)
 
+
+    
 @app.route("/logout")
 def logout():
     logout_user()
     flash("Deslogado com sucesso")
-    return redirect(url_for("index"))
+    return redirect(url_for("index.html"))
 
 if __name__ == "__main__":
     app.run(debug=True)
