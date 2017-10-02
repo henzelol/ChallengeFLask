@@ -18,7 +18,7 @@
 
   </head>
 
-  <body background=static/images/re3.jpeg>
+  <body background=static/images/5.gif>
 
 
   <div class="container" align="center">
@@ -65,7 +65,6 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">Criador de Itens!</h1>
         <p>Neste site voce pode cadastrar itens e especificar o seu valor de acordo com o que voce achar correto! Adicione seu item,sua descrição e seu valor e vá para o outro link que se encontra ao lado para visualizar seu item</p>
@@ -83,7 +82,7 @@
     {% if form.errors.name %}
      <div class="alert alert-danger" role="alert">
     <ul>
-    {%for e in form.errors.name %}
+  {% for e in form.errors.name %}
       <li>{{ e }}</li>
     {% endfor %}
     </ul>
@@ -106,13 +105,13 @@
     </div>
     {% endif %}
     </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <h2>Valor</h2>
           <form action="" method="POST">
     <div class="form-group">
 <div class="form-group">
     
-    {{ form.value(class="form-control", placeholder="Digite o valor do seu Item") }}
+    {{ form.value(class="form-control", placeholder="Digite o valor do Item") }}
     {% if form.errors.value %}
      <div class="alert alert-danger" role="alert">
     <ul>
