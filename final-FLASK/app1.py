@@ -150,6 +150,7 @@ def create():
     return render_template("create.html",produtos=produtos)
 
 
+
     
 @app.route("/logout")
 def logout():
