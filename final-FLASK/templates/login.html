@@ -2,6 +2,8 @@
 
 {% block content %}
 
+
+
     <h1><center>Login</center></h1>
     <div class="col-md-4 col-md-offset-4" align="center">
     <form action="" method="POST">
@@ -13,7 +15,7 @@
      <div class="alert alert-danger" role="alert">
     <ul>
     {%for e in form.errors.email %}
-      <li>{{ e }}</li>
+    <li>{{ e }}</li>
     {% endfor %}
     </ul>
     </div>
@@ -25,8 +27,8 @@
     {% if form.errors.senha %}
     <div class="alert alert-danger" role="alert">
     <ul>
-    {%for e in form.errors.email %}
-      <li>{{ e }}</li>
+    {% for e in form.errors.senha %}
+    <li>{{ e }}</li>
     {% endfor %}
     </ul>
     </div>
@@ -34,7 +36,7 @@
     </div>
     <div class="checkbox">
     <label>
-    {{ form.remember_me }} Aceito os termos de Uso
+    {{ form.remember_me }} Lembre me
     </label>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>

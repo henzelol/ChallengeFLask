@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user
 
 
 app = Flask(__name__)
@@ -24,7 +24,6 @@ lm.init_app(app)
 def load_user(id):
     return User.get(id)
 
-
 import sys
 # sys.setdefaultencoding() does not exist, here!
 reload(sys)  # Reload does the trick!
@@ -40,10 +39,10 @@ class LoginForm(Form):
     value = StringField("value", validators=[DataRequired()])
 
 class products(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True )
-    name = db.Column(db.String(50))
-    description = db.Column(db.String(50))
-    value = db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(300), nullable=False)
+    value = db.Column(db.Integer,nullable=False)
 
     def __init__(self,name,description,value):
         self.name = name
@@ -53,9 +52,9 @@ class products(db.Model):
 class User(db.Model):
     __tablename__ = "users"
 
-    id = db.Column(db.Integer, primary_key=True)
-    senha = db.Column(db.String(16))
-    email = db.Column(db.String(50), unique=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    senha = db.Column(db.String(16), nullable=False)
+    email = db.Column(db.String(50), unique=True, nullable=False)
 
     @property
     def is_authenticated(self):
@@ -79,20 +78,10 @@ class User(db.Model):
 
 db.create_all()
 
-
 @app.route("/")
 @app.route("/index")
 def index():
     return render_template("index.html")
-
-# user = User.query.filter_by(email=form.emai.data).first()
- #        if user and user.senha == form.senha.data:
-  #          login_user(user)
-   #         flash("logado com sucesso")
-    #    else:
-     #       flash("login invalido")
-
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -114,14 +103,12 @@ def signup():
     if request.method == 'POST':
         senha = (request.form.get("senha"))
         email = (request.form.get("email"))
-        new_user = User(senha=senha,email=email)
+        new_user = User(email=email,senha=senha)
         
         db.session.add(new_user)
         db.session.commit()
         flash("Usuario Cadastrado com Sucesso")
     return render_template("signup.html",form=form)
-
-
 
 @app.route("/logged", methods=['GET', 'POST'])
 def logged():
@@ -137,8 +124,6 @@ def logged():
         flash("Item criado com sucesso")
     return render_template("logged.html", form=form)
 
-
-
 @app.route("/contact")
 def contato():
     return render_template("contact.html")
@@ -149,14 +134,10 @@ def create():
     produtos = products.query.all()
     return render_template("create.html",produtos=produtos)
 
-
-
-    
-@app.route("/logout")
-def logout():
-    logout_user()
-    flash("Deslogado com sucesso")
-    return redirect(url_for("index.html"))
+@app.route("/createdb")
+def createdb():
+    db.create_all()
+    return "OK"    
 
 if __name__ == "__main__":
     app.run(debug=True)
