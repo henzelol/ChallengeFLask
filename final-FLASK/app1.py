@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import DataRequired
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, logout_user
 
 
 app = Flask(__name__)
@@ -134,10 +134,17 @@ def create():
     produtos = products.query.all()
     return render_template("create.html",produtos=produtos)
 
-# @app.route("/createdb") # I create this route only to play with my database.
-# def createdb():
-#    db.create_all()
-#   return "OK"    
+@app.route("/createdb")
+def createdb():
+    db.create_all()
+    return "OK"    
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    flash("Deslogado com sucesso")
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
