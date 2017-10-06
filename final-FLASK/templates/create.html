@@ -11,7 +11,7 @@
 
     <title>Itens Criados</title>
 
-    
+    <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename="css/bootstrap.min.css") }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="../static/css/_css.css ">
@@ -53,13 +53,13 @@
             <a class="nav-link" href="/create">Itens Criados <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/index">Deslogar</a>
+            <a class="nav-link" href="logout">Deslogar</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    
+    <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="container">
       <br>
       <br>
@@ -68,7 +68,7 @@
       </div>
     </div>
     <div class="container">
-  
+      <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-8">
         <br>
@@ -113,20 +113,22 @@
     <br>
     <hr size="10" width="180%" align="center" noshade>
         {% endfor %} 
-    </div>
+    </div> <!-- /container -->
 
     <div class="container">
-      
+      <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-8">
 
 
-    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
-    
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
