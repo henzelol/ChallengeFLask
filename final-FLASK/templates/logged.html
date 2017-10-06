@@ -11,7 +11,7 @@
 
     <title>Crie Seus itens</title>
 
-   
+    <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename="css/bootstrap.min.css") }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="../static/css/_css.css ">
@@ -25,7 +25,7 @@
       <div class="">
         <h3 class="text-muted">Desafio Flask</h3>
       </div>
-
+<br>
       <div class-"alert alert-warning">
       {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -54,7 +54,7 @@
             <a class="nav-link" href="create">Itens Criados <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/index">Deslogar</a>
+            <a class="nav-link" href="logout">Deslogar</a>
           </li>
       </div>
     </nav>
@@ -69,7 +69,7 @@
     </div>
 
     <div class="container">
- 
+      <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-8">
           <h2>Nome do seu Item</h2>
@@ -102,7 +102,7 @@
     </div>
     {% endif %}
     </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <h2>Valor</h2>
           <form action="" method="POST">
     <div class="form-group">
@@ -121,17 +121,18 @@
     </div>
 
 <button type="submit" class="btn btn-default">Submit</button>
-      <hr>
-
+<br>
+<br>
+<br>
       <footer>
         <p>&copy; Company 2017</p>
       </footer>
-    </div> 
+    </div> <!-- /container -->
 
 
-    
-  
-  
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
