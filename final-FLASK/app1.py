@@ -134,10 +134,10 @@ def create():
     produtos = products.query.all()
     return render_template("create.html",produtos=produtos)
 
-@app.route("/createdb")
-def createdb():
-    db.create_all()
-    return "OK"    
+# @app.route("/createdb") # I create this route only to play with my database.
+# def createdb():
+#    db.create_all()
+#   return "OK"    
 
 if __name__ == "__main__":
     app.run(debug=True)
