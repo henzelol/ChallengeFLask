@@ -14,5 +14,5 @@ Flask-Script==2.0.6
 Flask-SQLAlchemy==2.2
 Flask-WTF==0.14.2
 html5lib==0.999
-python-2.7.13 
+python-2.7.14
 
