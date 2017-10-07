@@ -1,4 +1,5 @@
 Flask==0.11.1
+python-3.5.1
 Flask-Login==0.4.0
 PyMySQL==0.7.9
 SQLAlchemy==1.1.4
